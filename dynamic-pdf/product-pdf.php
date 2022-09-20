@@ -276,4 +276,44 @@ DOC;
 
 	$file_name =  $product_title . '_Scheda_Prodotto' . '.pdf';
 	$pdf->Output($file_name, 'D');
+	
+	
+    $mail = new PHPMailer();
+    try {
+        //Email Configeration
+        $mail->Host = 'modelvela_tesseramento@modelvela.com';
+        $mail->SMTPAuth = true;
+        $mail->Port = 465;
+        $mail->Username = 'modelvela_tesseramento@modelvela.com';
+        $mail->Password = 'modelvela_tesseramento';
+
+        // 		$mail->isSMTP();
+        //$mail->SMTPDebug = SMTP::DEBUG_SERVER;   //enable dubuging            
+
+        //Recipients
+        $mail->setFrom('modelvela_tesseramento@modelvela.com', ' ');
+        $mail->addAddress($email);
+
+        //Attachments
+        $mail->addStringAttachment($membership_card, 'membership_card.pdf');
+
+        // $msg= $membership_card;
+
+
+
+        mail();
+
+        //Content
+        $mail->isHTML(true);                  //Set email format to HTML
+        $mail->CharSet = "utf-8";
+        $mail->Subject      = 'Tessera Associativa ModelVela';
+        $mail->Body         = $mod_message;
+        // $mail->AltBody      = strip_tags($mail->Body);
+        $mail->send();
+
+        die;
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+    die;
 }
