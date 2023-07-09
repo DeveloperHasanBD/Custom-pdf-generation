@@ -47,7 +47,11 @@ function print_product_info()
 ?>
 <?php
 	$pdf = new PDF();
+	
+	// $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP + 45, PDF_MARGIN_RIGHT);
+	// $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM+7);
 
+	
 	// 	$header = <<<DOC
 	// 	<table>
 	//     <tr>
