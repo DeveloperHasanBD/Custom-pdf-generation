@@ -279,6 +279,7 @@ DOC;
 	 */
 
 	$file_name =  $product_title . '_Scheda_Prodotto' . '.pdf';
+	// ob_end_clean();
 	$pdf->Output($file_name, 'D');
 	
 // 	$membership_card = $pdf->Output('membership_card.pdf', 'S');
